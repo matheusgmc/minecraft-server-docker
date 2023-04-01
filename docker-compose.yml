@@ -21,7 +21,7 @@ services:
       MOTD: "message" # message
       ONLINE_MODE: "false"
       SERVER_NAME: "server_name"
-      ICON: "icon.png" # size=64 png
+      ICON: "icon.png" # size=64x64 png
       OVERRIDE_ICON: "true"
       VIEW_DISTANCE: 12
       SIMULATION_DISTANCE: 12
