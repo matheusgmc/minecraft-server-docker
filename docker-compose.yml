@@ -1,0 +1,42 @@
+version: "3.4"
+
+services:
+  ngrok:
+    image: ngrok/ngrok
+    command: "tcp minecraft:25565"
+    ports:
+      - 4040:4040
+    environment:
+      NGROK_AUTHTOKEN: ""
+      REGION: "sa"
+      PROTOCOL: "tcp"
+      PORT: 25565
+  minecraft:
+    image: "itzg/minecraft-server"
+    environment:
+      EULA: "true"
+      VERSION: "1.19.2"
+      MEMORY: "2G"
+      TYPE: "PAPER"
+      MOTD: "message" # message
+      ONLINE_MODE: "false"
+      SERVER_NAME: "server_name"
+      ICON: "icon.png" # size=64 png
+      OVERRIDE_ICON: "true"
+      VIEW_DISTANCE: 12
+      SIMULATION_DISTANCE: 12
+      RCON: "false"
+      ENABLE_RCON: "false"
+      WHITELIST_FILE: "/extras/whitelist.json"
+      OVERRIDE_WHITELIST: "true"
+      ENABLE_WHITELIST: "true"
+
+      DIFFICULTY: "normal"
+
+    ports:
+      - 25565:25565
+
+    volumes:
+      - ./data:/data
+      - ./extras:/extras
+      - ./plugins:/plugins
